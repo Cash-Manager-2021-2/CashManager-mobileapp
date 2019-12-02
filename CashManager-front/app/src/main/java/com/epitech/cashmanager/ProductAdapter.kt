@@ -15,7 +15,6 @@ class ProductAdapter(
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cardView = itemView.findViewById<CardView>(R.id.item)
         val titleView = cardView.findViewById<TextView>(R.id.title)
-        val descView = cardView.findViewById<TextView>(R.id.description)
         val priceView = cardView.findViewById<TextView>(R.id.price)
     }
 
@@ -30,7 +29,6 @@ class ProductAdapter(
         holder.cardView.setOnClickListener(itemOnClickListener)
         holder.cardView.tag = position
         holder.titleView.text = product.title
-        holder.descView.text = product.description
         holder.priceView.text = product.price.toString()
     }
 

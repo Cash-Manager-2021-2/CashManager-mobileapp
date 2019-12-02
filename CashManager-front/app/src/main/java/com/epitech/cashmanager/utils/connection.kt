@@ -50,7 +50,7 @@ fun disconnect() {
 }
 
 fun clearAll(): Array<cartProduct>{
-    ws.send("article clear")
+    ws.send("cart clear")
     Log.e("Clear Cart", "le panier vient d'être vidé")
 
     return getCart()
@@ -81,11 +81,11 @@ fun getCart() : Array<cartProduct> {
 
     Log.e("cart", LoginActivity.messageReçus)
 
-    if (tmp.size != 1) {
+    if (tmp.size > 1) {
         tmp.removeAt(0)
         for (line in tmp) {
             var productInfo = line.split(';')
-            cart.add(cartProduct(Product(productInfo[0], "description", productInfo[1].toFloat()), productInfo[2].toInt()))
+            cart.add(cartProduct(Product(productInfo[0], productInfo[1].toFloat()), productInfo[2].toInt()))
         }
     }
 
@@ -93,22 +93,26 @@ fun getCart() : Array<cartProduct> {
 }
 
 fun chargeArticles() : ArrayList<Product>{
-    var articles = arrayListOf(
-        Product("pomme", "description 1", 1.5F),
-        Product("poire", "description 2", 10F),
-        Product("avocat", "description 3", 3.2F),
-        Product("televison", "description 4", 11.99F),
-        Product("casque", "description 5", 14.7F)
-    )
+    LoginActivity.messageReçus = ""
 
-    for (article in articles) {
-        LoginActivity.messageReçus = ""
-        ws.send("article create " + article.title + " " + article.price)
-        while (LoginActivity.messageReçus == "") {        }
-        LoginActivity.messageReçus = ""
+    var articles = mutableListOf<Product>()
+
+    ws.send("article list")
+
+    while(LoginActivity.messageReçus == "") {    }
+
+    var tmp = LoginActivity.messageReçus.split(" ") as MutableList<String>
+    Log.e("articles", LoginActivity.messageReçus)
+
+    if (tmp.size > 1) {
+        tmp.removeAt(0)
+        for (line in tmp) {
+            var productInfo = line.split(";")
+            articles.add(Product(productInfo[0], productInfo[1].toFloat()))
+        }
     }
 
-    return articles
+    return ArrayList(articles)
 
 }
 

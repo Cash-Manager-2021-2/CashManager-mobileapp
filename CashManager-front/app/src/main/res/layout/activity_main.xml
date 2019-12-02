@@ -43,7 +43,7 @@
         android:layout_marginTop="70dp"
         android:layout_centerInParent="true"
         android:layout_below="@+id/text2"
-        android:hint="Code Client (pas d'espaces)"/>
+        android:hint="Code Client"/>
 
     <Button
         android:id="@+id/login_btn"

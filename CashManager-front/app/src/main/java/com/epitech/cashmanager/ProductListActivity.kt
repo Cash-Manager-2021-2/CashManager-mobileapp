@@ -83,7 +83,7 @@ class ProductListActivity : AppCompatActivity(), View.OnClickListener{
 
         val builder = AlertDialog.Builder(this)
             .setView(dialogView)
-            .setTitle("Cart's products")
+            .setTitle("Panier")
         val alertDialog = builder.show()
     }
 

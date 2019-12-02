@@ -3,9 +3,8 @@ package com.epitech.cashmanager
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Product (var title: String = "", var description: String = "", var price: Float = 0F) : Parcelable {
+data class Product (var title: String = "", var price: Float = 0F) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
         parcel.readString(),
         parcel.readFloat()
     ) {
@@ -13,7 +12,6 @@ data class Product (var title: String = "", var description: String = "", var pr
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(title)
-        parcel.writeString(description)
         parcel.writeFloat(price)
     }
 
