@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_light"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -11,7 +12,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/app_log"
+        android:src="@drawable/app_logo"
         android:layout_marginTop="120dp"/>
 
     <TextView
@@ -20,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/app_image"
         android:layout_centerHorizontal="true"
-        android:text="Texte de bienvenue"
+        android:text="CashManager"
         android:textSize="30sp"
         android:textStyle="bold"/>
 
@@ -31,9 +32,10 @@
         android:layout_below="@+id/text1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:text="Connectez vous avec votre code client!"
+        android:text="Connectez vous avec votre code client"
         android:textSize="15sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:textColor="@color/colorAccent"/>
 
 
     <EditText
@@ -43,7 +45,9 @@
         android:layout_marginTop="70dp"
         android:layout_centerInParent="true"
         android:layout_below="@+id/text2"
-        android:hint="Code Client"/>
+        android:textColor="@android:color/white"
+        android:hint="Code Client"
+        android:textColorHint="@android:color/white"/>
 
     <Button
         android:id="@+id/login_btn"

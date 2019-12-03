@@ -26,7 +26,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     tools:text="X 2"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/colorAccent"/>
 
                 <TextView
                     android:id="@+id/title"
@@ -46,7 +47,8 @@
                     tools:text="Prix"
                     android:layout_alignParentRight="true"
                     android:textStyle="bold|italic"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:textColor="@android:color/holo_blue_light"/>
 
             </RelativeLayout>
 

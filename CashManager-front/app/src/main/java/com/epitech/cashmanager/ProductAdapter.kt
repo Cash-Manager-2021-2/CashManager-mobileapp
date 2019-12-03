@@ -29,7 +29,7 @@ class ProductAdapter(
         holder.cardView.setOnClickListener(itemOnClickListener)
         holder.cardView.tag = position
         holder.titleView.text = product.title
-        holder.priceView.text = product.price.toString()
+        holder.priceView.text = String.format("%.2f €", product.price);
     }
 
     override fun getItemCount(): Int {

@@ -11,7 +11,7 @@
         android:id="@+id/clear_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_red_light"
+        android:backgroundTint="@color/colorAccent"
         android:text="Vider le panier"
         android:textColor="@android:color/white"
         android:layout_alignParentRight="true"/>
@@ -25,39 +25,29 @@
         android:layout_below="@id/clear_cart"/>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
 
-        <LinearLayout
-            android:id="@+id/total_view"
+
+        <TextView
+            android:id="@+id/total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true">
+            android:text="Yooo"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total: "
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yooo"
-                android:textColor="@android:color/holo_blue_light"
-                android:textSize="20sp" />
-
-        </LinearLayout>
 
         <Button
             android:id="@+id/pay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/total_view"
-            android:text="Payer" />
+            android:layout_below="@+id/total"
+            android:text="Payer"
+            android:layout_centerHorizontal="true"/>
 
 
     </RelativeLayout>

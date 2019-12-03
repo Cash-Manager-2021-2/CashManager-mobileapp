@@ -7,12 +7,14 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.epitech.cashmanager.utils.*
 import com.google.android.material.button.MaterialButton
+
 
 lateinit var productAdapter: ProductAdapter
 lateinit var cartAdapter: CartAdapter
@@ -21,7 +23,6 @@ lateinit var user: User
 lateinit var cart: MutableList<cartProduct>
 lateinit var dialogView: View
 lateinit var recyclerView: RecyclerView
-
 
 class ProductListActivity : AppCompatActivity(), View.OnClickListener{
 
@@ -65,6 +66,7 @@ class ProductListActivity : AppCompatActivity(), View.OnClickListener{
                 disconnect()
                 finishAffinity()
                 startActivity(intent)
+                Toast.makeText(this, "Déconnexion réussi", Toast.LENGTH_LONG).show()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
@@ -78,7 +80,9 @@ class ProductListActivity : AppCompatActivity(), View.OnClickListener{
         recyclerView.adapter = cartAdapter
 
         countTotal(products)
-        dialogView.findViewById<Button>(R.id.pay).setOnClickListener { payActivityLaunch(dialogView.findViewById<TextView>(R.id.total).text.toString().toFloat()) }
+        var tmp = dialogView.findViewById<TextView>(R.id.total).text.toString().split(" ")
+        var tmp1 = tmp[0]
+        dialogView.findViewById<Button>(R.id.pay).setOnClickListener { payActivityLaunch(tmp1.toFloat()) }
         dialogView.findViewById<MaterialButton>(R.id.clear_cart).setOnClickListener {  clearCart()  }
 
         val builder = AlertDialog.Builder(this)
@@ -93,6 +97,7 @@ class ProductListActivity : AppCompatActivity(), View.OnClickListener{
         cart.addAll(tmp)
         cartAdapter.notifyDataSetChanged()
         countTotal(cart)
+        Toast.makeText(this, "Votre panier a été vidé", Toast.LENGTH_SHORT).show()
     }
 
     private fun payActivityLaunch(total: Float) {
@@ -112,6 +117,7 @@ class ProductListActivity : AppCompatActivity(), View.OnClickListener{
                 val tmp = getCart()
                 cart.clear()
                 cart.addAll(tmp)
+                Toast.makeText(this, "L'article " + productToAdd.toString() + " a été ajouté à votre panier", Toast.LENGTH_SHORT).show()
             }
             R.id.item_cart -> {
                 var productToRemove = cart[view.tag as Int].product.title
@@ -130,9 +136,9 @@ class ProductListActivity : AppCompatActivity(), View.OnClickListener{
         val total = dialogView.findViewById<TextView>(R.id.total)
         var totalF = 0F
         for (product in products) {
-            var totalProduct = product.product.price * product.quantity
+            var totalProduct = product.product.price.times(product.quantity)
             totalF += totalProduct
         }
-        total.text = totalF.toString()
+        total.text = String.format("%.2f €", totalF);
     }
 }
