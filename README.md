@@ -1,2 +1,4 @@
 # CashManager-mobileapp
-Mobile app for CashManager Project
+Mobile app for CashManager Project in Kotlin
++ NFC Reader
++ QRCode Scan
